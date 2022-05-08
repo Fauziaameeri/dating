@@ -1,35 +1,37 @@
-p {
-    font-size: 20px;
-}
-i {
-    font-size: 20px;
+
+body{
+    background-color: #7abaff;
 }
 
-mark.purple {
-    color: #d886eb;
-    background: none;
+nav{
+    width: 100%;
 }
 
-mark.green {
-    color: #73ebbb;
-    background: none;
+/*Classes*/
+.nav {
+    background: #545b62 !important;
 }
 
-mark.lightblue {
-    color: #79baf2;
-    background: none;
+.link{
+    padding: 5% !important;
 }
 
-mark.blue {
-    color: #2c62de;
-    background: none;
+.navbar-header{
+    padding-left: 3% !important;
 }
-.jumbotron{
-    background-color: white;
+
+.card-header {
+    background-color: #0069d9;
 }
-.btn{
-    margin-left: auto;
+
+.card-body {
+    background-color: aliceblue;
 }
-td {
-    padding:0 15px;
+
+.card-footer {
+    background-color: #7abaff;
+}
+
+.card {
+    border-color: #7abaff;
 }
