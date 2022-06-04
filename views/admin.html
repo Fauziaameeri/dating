@@ -1,0 +1,74 @@
+<!--
+    Name: FA
+    Date: 06/01/22
+    Purpose: A registration system that will set up a dating classes
+-->
+
+<include href="views/header.html"></include>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+</head>
+<body>
+<div class="container text-center">
+    <form method="post" action="#">
+        <br>
+        <h1>Current Members Table</h1>
+        <table id="member">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>State</th>
+                <th>Seeking</th>
+                <th>Bio</th>
+                <th>Premium</th>
+                <th>Interests</th>
+                <th>Profile</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <repeat group="{{ @members }}" value="{{ @member }}">
+                <tr>
+                    <td>{{ @member['userNum'] }}</td>
+                    <td>{{ @member['fName'] }} {{ @member['lName'] }}</td>
+                    <td>{{ @member['age'] }}</td>
+                    <td>{{ @member['gender'] }}</td>
+                    <td>{{ @member['phone'] }}</td>
+                    <td>{{ @member['email'] }}</td>
+                    <td>{{ @member['state'] }}</td>
+                    <td>{{ @member['seeking'] }}</td>
+                    <td>{{ @member['bio'] }}</td>
+                    <td>
+                        <check if="{{ @member['isMember'] == 1 }}">
+                            <true>
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled"  checked>
+                            </true>
+                            <false>
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" >
+                            </false>
+                        </check>
+                    </td>
+                    <td>{{ @member['interests'] }}</td>
+                    <td><button class="btn-success" type="submit" name="memberNum" value="{{ @member['userNum'] }}">View</button></td>
+                </tr>
+            </repeat>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>
+
+<script>
+    $(document).ready( function () {
+        $('#member').DataTable();
+    } );
+</script>
