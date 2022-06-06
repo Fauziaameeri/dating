@@ -4,63 +4,30 @@
  * 05/19/2022
  * Dating/model/validation-layer.php
  */
-class Validate
-{
 
-    /** valid fName() returns true if first name contains only alphabetic characters
-     * @param $fName
-     * @return bool
-     */
     function validfName($fName)
     {
-        return ctype_alpha($fName) && isset($fName);
-    }
+      return  strlen(trim($fName)) >= 2;
 
-    /** valid lName() returns true if last name contains only alphabetic characters
-     * @param $lName
-     * @return bool
-     */
+    }
     function validlName($lName)
     {
-        return ctype_alpha($lName) && isset($lName);
+        return  strlen(trim($lName)) >= 2;
     }
 
-    /** validAge() returns true if age is greater than 18, and less than 100
-     * @param $age
-     * @return bool
-     */
     function validAge($age): bool
     {
-        return $age > 18 && $age < 100;
+        return $age >= 18 && $age <= 118;
     }
-
-    /** validPhone() returns true if phone number is 10 or 11 digits long
-     * @param $number
-     * @return bool
-     */
-    function validPhone($number): bool
+    function validPhone($number)
     {
-        if ($number >= 1000000000 && $number <= 99999999999) {
-            return true;
-        } else {
-            return false;
-        }
+       return preg_match('/^[0-9]{10}+$/', $number);;
     }
 
-    /**
-     * @param $email
-     * @return bool
-     */
     function validEmail($email): bool
     {
         return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
-
-    /** validOutdoor() returns true if all the selected outdoor-activities are
-     * in the list
-     * @param $outdoorActivities
-     * @return bool
-     */
     function validOutdoor($outdoorActivities): bool
     {
         global $dataLayer;
@@ -75,11 +42,6 @@ class Validate
         return true;
     }
 
-    /** validOutdoor() returns true if all the selected indoor-activities are
-     * in the list
-     * @param $indoorActivities
-     * @return bool
-     */
     function validIndoor($indoorActivities): bool
     {
         global $dataLayer;
@@ -93,4 +55,3 @@ class Validate
         }
         return true;
     }
-}

@@ -2,122 +2,90 @@
     dating/views/profile.html
     Author: Fauzia
     Full Stack Web Dev
-    Dating2
+    Dating
 -->
 
-<include href="views/header.html"></include>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <title>Personal Information</title>
+</head>
 <body>
-<div class="container">
-    <br>
-    <h1>Profile</h1>
-    <hr>
 
-    <!--Form-->
-    <form method="post" action="#">
-        <div class="row">
+<div class="container rounded border mt-4">
+    <!-- form start -->
+    <form action="#" method="post" class="form-horizontal">
+        <div class="row column_row mb-0">
+            <h1 class="mt-4">Profile</h1>
+        </div>
+        <div class="row column_row border-top pt-4">
             <div class="col">
-
                 <div class="form-group">
-                    <label for="email"><strong>Email</strong></label>
-                    <input type="text" class="form-control" name="email" id="email" placeholder="Email" value="{{ @email }}">
-                    <div class="text-danger">
-                        <!-- Inline error message -->
-                        <check if="{{ isset(@errors['email']) }}">
-                            {{ @errors['email'] }}
-                        </check>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="state"><strong>State</strong></label>
-                    <select class="form-control" name="state" id="state">
-
-                        <!-- Displays on initial visit -->
-                        <check if="{{ @state==NULL }}">
-                            <option value="N/A">Select a State</option>
-                            <option>Olympus</option>
-                            <option>Underworld</option>
-                        </check>
-
-                        <!-- Displays if no option is selected -->
-                        <check if="{{ @state=='N/A' }}">
-                            <option value="N/A">Select a State</option>
-                            <option>Olympus</option>
-                            <option>Underworld</option>
-                        </check>
-
-                        <!-- Displays if Olympus is selected -->
-                        <check if="{{ @state=='Olympus' }}">
-                            <true>
-                                <option value="N/A">Select a State</option>
-                                <option selected>Olympus</option>
-                                <option>Underworld</option>
-                            </true>
-                        </check>
-
-                        <!-- Displays if Underworld is selected -->
-                        <check if="{{ @state=='Underworld' }}">
-                            <option value="N/A">Select a State</option>
-                            <option>Olympus</option>
-                            <option selected>Underworld</option>
-                        </check>
-                    </select>
-
-                </div>
-
-                <div class="form-group">
-                    <p><strong>Seeking</strong></p>
-
-                    <!-- Displays on initial visit or if user chooses no preference -->
-                    <check if="{{ @genderInterest==null || @genderInterest=='null' }}">
-                        <true>
-                            <input class="form-group" type="radio" name="genderInterest" id="No preference" value="null" checked>
-                            <label class="form-group" for="No preference">No preference &nbsp&nbsp </label>
-                        </true>
-                        <false>
-                            <input class="form-group" type="radio" name="genderInterest" id="No preference" value="null">
-                            <label class="form-group" for="No preference">No preference &nbsp&nbsp </label>
-                        </false>
-                    </check>
-
-                    <!-- Displays if user chooses god -->
-                    <check if="{{ @genderInterest=='god' }}">
-                        <true>
-                            <input class="form-group" type="radio" name="genderInterest" id="god" value="god" checked>
-                            <label class="form-group" for="god">God &nbsp&nbsp</label>
-                        </true>
-                        <false>
-                            <input class="form-group" type="radio" name="genderInterest" id="god" value="god">
-                            <label class="form-group" for="god">God &nbsp&nbsp</label>
-                        </false>
-                    </check>
-
-                    <!-- Displays if user chooses goddess -->
-                    <check if="{{ @genderInterest=='goddess' }}">
-                        <true>
-                            <input class="form-group" type="radio" name="genderInterest" id="goddess" value="goddess" checked>
-                            <label class="form-group" for="goddess">Goddess &nbsp&nbsp</label>
-                        </true>
-                        <false>
-                            <input class="form-group" type="radio" name="genderInterest" id="goddess" value="goddess">
-                            <label class="form-group" for="goddess">Goddess &nbsp&nbsp</label>
-                        </false>
+                    <label class="h6" for="email">Email</label>
+                    <input type="text" id="email" name="email" class="form-control" value="{{ @userEmail }}">
+                    <check if="{{ isset(@errors['email']) }}">
+                        <span class="err">{{ @errors['email'] }}</span>
                     </check>
                 </div>
+                <div class="form-group">
+                    <label class="h6" for="state">State</label>
+                    <input type="text" id="state" name="state" class="form-control" value="{{ @state }}">
+
+                    </input>
+                </div>
+                <h6>Seeking</h6>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="seeking" value="male">
+<!--                        <check if="{{ @userSeeking == 'male' }}">checked="checked"</check>-->
+<!--                        Male-->
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="seeking" value="female">
+<!--                        <check if="{{ @userSeeking == 'female' }}">checked="checked"</check>-->
+<!--                        Female-->
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="gender" value="non-binary">
+<!--                        <check if="{{ @userGender == 'non-binary' }}">checked="checked"</check>-->
+<!--                        Non-binary-->
+                    </label>
+                </div>
+<!--                <div class="form-group">-->
+<!--                    <check if="{{ isset(@errors['seeking']) }}">-->
+<!--                        <span class="err">{{ @errors['seeking'] }}</span>-->
+<!--                    </check>-->
+<!--                </div>-->
             </div>
-
             <div class="col">
                 <div class="form-group">
-                    <label for="biography"><strong>Biography</strong></label><br>
-                    <textarea class="form-group" name="biography" id="biography" rows="3">{{ @biography }}</textarea>
+                    <label class="h6" for="bio">Biography</label>
+                    <textarea class="form-control" id="bio" rows="5" name="bio">{{ @userBio }}</textarea>
                 </div>
             </div>
         </div>
-
-        <div class="text-right">
-            <button class="btn btn-info" type="submit" >Next</button>
+        <div class="row column_row d-flex justify-content-end">
+            <input type="submit" class="form-control btn btn-primary rounded col-1 m-2" id="btn_size"
+                   value="Next >">
         </div>
     </form>
 </div>
+
 </body>
+
 </html>

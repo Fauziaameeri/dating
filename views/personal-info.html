@@ -17,13 +17,13 @@
         <div class="row">
             <div class="col">
                 <div class="form-group">
-                    <label for="fName"><strong>First name</strong></label>
-                    <input type="text" class="form-control" name="fName" id="fName" placeholder="Enter first name" value="{{ @fName }}">
+                    <label for="fname"><strong>First name</strong></label>
+                    <input type="text" class="form-control" name="fname" id="fname" placeholder="Enter first name" value="{{ @fname }}">
                     <div class="text-danger">
 
                         <!-- Inline error message -->
-                        <check if="{{ isset(@errors['fName']) }}">
-                            {{ @errors['fName'] }}
+                        <check if="{{ isset(@errors['fname']) }}">
+                            {{ @errors['fname'] }}
                         </check>
                     </div>
                     <br>
@@ -31,12 +31,12 @@
 
                 <div class="form-group">
                     <label for="lName"><strong>Last name</strong></label>
-                    <input type="text" class="form-control" name="lName" id="lName" placeholder="Enter last name" value="{{ @lName }}">
+                    <input type="text" class="form-control" name="lName" id="lName" placeholder="Enter last name" value="{{ @lname }}">
                     <div class="text-danger">
 
                         <!-- Inline error message -->
-                        <check if="{{ isset(@errors['lName']) }}">
-                            {{ @errors['lName'] }}
+                        <check if="{{ isset(@errors['lname']) }}">
+                            {{ @errors['lname'] }}
                         </check>
                     </div>
                     <br>
@@ -45,61 +45,36 @@
                 <div class="form-group">
                     <label for="age"><strong>Age</strong></label>
                     <input type="number" class="form-control" name="age" id="age" placeholder="Enter age" value="{{ @age }}">
-                    <div class="text-danger">
 
-                        <!-- Inline error message -->
-                        <check if="{{ isset(@errors['age']) }}">
-                            {{ @errors['age'] }}
-                        </check>
-                    </div>
-                    <br>
                 </div>
+                <check if="{{ isset(@errors['age']) }}">
+                    <span class="err">{{ @errors['age'] }}</span>
+                </check>
 
-                <div class="form-group">
-                    <p><strong>Gender</strong></p>
+                <label for="gender"><strong>Gender</strong></label><br>
+                <div class="form-check-inline">
 
-                    <check if="{{ @gender=='male' }}">
-                        <true>
-                            <input class="form-group" type="radio" name="genders" id="male" value="male" checked>
-                            <label class="form-group" for="male">Male</label>
-                        </true>
-                        <false>
-                            <input class="form-group" type="radio" name="genders" id="male" value="male">
-                            <label class="form-group" for="male">Male</label>
-                        </false>
-                    </check>
+                    <repeat group="{{ @gender}}" value="{{ @gender }}">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="gender" id="gender" value="{{@gender}}"
+                            >{{ @gender}}
+                        </label><br>
+                    </repeat><br>
 
-
-                    <check if="{{ @gender=='female' }}">
-                        <true>
-                            <input class="form-group" type="radio" name="genders" id="female" value="female" checked>
-                            <label class="form-group" for="female">Female</label>
-                        </true>
-                        <false>
-                            <input class="form-group" type="radio" name="genders" id="female" value="female">
-                            <label class="form-group" for="female">Female</label>
-                        </false>
-                    </check>
-
-                    <div class="text-danger">
-
-                        <!-- Inline error message -->
-                        <check if="{{ isset(@errors['genders']) }}">
-                            {{ @errors['genders'] }}
-                        </check>
-                    </div>
-
-                    <br>
                 </div>
+                <check if="{{ isset(@errors['gender']) }}">
+                    <span class="err">{{ @errors['gender'] }}</span>
+                </check>
+
 
                 <div class="form-group">
                     <label for="number"><strong>Phone Number</strong></label>
-                    <input type="number" class="form-control" name="number" id="number" placeholder="Enter phone number" value="{{ @number }}">
+                    <input type="number" class="form-control" name="number" id="number" placeholder="Enter phone number" value="{{ @phone }}">
                     <div class="text-danger">
 
                         <!-- Inline error message -->
-                        <check if="{{ isset(@errors['number']) }}">
-                            {{ @errors['number'] }}
+                        <check if="{{ isset(@errors['phone']) }}">
+                            {{ @errors['phone'] }}
                         </check>
                     </div>
                     <br>

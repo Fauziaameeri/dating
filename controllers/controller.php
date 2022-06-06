@@ -33,11 +33,11 @@ class Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             //Assign post array to variables
-            $fName = trim($_POST['fName']);
-            $lName = trim($_POST['lName']);
-            $age = trim($_POST['age']);
+            $fName = ($_POST['fName']);
+            $lName = ($_POST['lName']);
+            $age = ($_POST['age']);
             $gender = $_POST['genders'];
-            $number = trim($_POST['number']);
+            $number = ($_POST['number']);
             $premium = $_POST['premium'];
 
             //Validation
@@ -109,7 +109,7 @@ class Controller
         //If user submits data
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             var_dump($_POST);
-            $email = trim($_POST['email']);
+            $email = ($_POST['email']);
             $state = $_POST['state'];
             $genderInterest = $_POST['genderInterest'];
             $biography = $_POST['biography'];
